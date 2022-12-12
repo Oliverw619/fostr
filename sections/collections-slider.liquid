@@ -26,7 +26,7 @@
             <img class="img-explore" src="{{ product.featured_image | img_url: 'master'}}">
             <h4 class="featured-title">{{ product.title }}</h4>
             <p class="featured-description">{{ product.description }}</p>
-            <p>{{ product.price | money }}</p>
+            <p class="featured-price">{{ product.price | money }}</p>
           </a>
       </div>  
     {% endfor %}
@@ -65,9 +65,14 @@
     .featured-title {
         text-decoration: none;
         font-size: 22px;
+        color: #111111
     }
     .featured-description {
         text-decoration: none;
+        color: #4D4D4D;
+    }
+    .featured-price {
+        color: #4D4D4D;
     }
 </style>
 
