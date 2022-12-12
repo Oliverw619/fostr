@@ -32,7 +32,7 @@
                 <h4 class="featured-title">{{ product.title }}</h4>
                 <p class="featured-description">{{ product.description | truncate: 140 }}</p>
                 {% if product.compare_at_price %} 
-                <p class="featured-price-sale">{{ product.compare_at_price | money  }}</p><p>{{ product.price | money  }}</p>
+                <p class="featured-price-sale">{{ product.compare_at_price | money  }}</p>
                 {% endif %} 
                 <p class="featured-price">{{ product.price | money  }}</p>
 
