@@ -35,7 +35,7 @@
                 <p class="featured-price-sale">{{ product.price | money  }}</p>
                 {% endif %}
 
-                <p class="featured-price">{{ product.price | money  }}</p>
+                <p class="featured-price">{{ product.price | money  }}{{ product.compare_at_price | money  }}</p>
 
           </a>
       </div>  
