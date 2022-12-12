@@ -22,7 +22,7 @@
     <div class="products-carousel js-flickity" data-flickity='{{ flickity_options }}'>
       {% for product in collection.products limit: product_limit %}
         <div class="carousel-cell">
-            {% for tag in product_card_product.tags %}
+            {% for tag in product.tags %}
             {% if tag == "label-new" %}
             <div class="label-new">NEW!</div>
             {% endif%}
