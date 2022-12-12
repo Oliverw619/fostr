@@ -25,6 +25,7 @@
           <a href="{{ product.url | within: collection }}">
             <img class="img-explore" src="{{ product.featured_image | img_url: 'master'}}">
             <h4>{{ product.title }}</h4>
+            <h4>{{ product.description }}</h4>
             <p>{{ product.price | money }}</p>
           </a>
       </div>  
