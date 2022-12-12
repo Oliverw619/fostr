@@ -32,10 +32,9 @@
                 <h4 class="featured-title">{{ product.title }}</h4>
                 <p class="featured-description">{{ product.description | truncate: 140 }}</p>
                 {% if product.compare_at_price %} 
-<p class="featured-price-sale">{{ product.compare_at_price | money  }}</p><p>{{ product.price | money  }}</p>
-{% endif %} 
-
-                <p class="featured-price">{{ product.price | money  }}{{ product.compare_at_price | money  }}</p>
+                <p class="featured-price-sale">{{ product.compare_at_price | money  }}</p><p>{{ product.price | money  }}</p>
+                {% endif %} 
+                <p class="featured-price">{{ product.price | money  }}</p>
 
           </a>
       </div>  
@@ -87,6 +86,7 @@
     }
     .featured-price-sale {
         text-decoration: line-through;
+        color: #4D4D4D;
     }
     .label-new {
         border: 2px solid var( — color-base-background-1);
