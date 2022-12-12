@@ -31,6 +31,10 @@
                 <img class="img-explore" src="{{ product.featured_image | img_url: 'master'}}">
                 <h4 class="featured-title">{{ product.title }}</h4>
                 <p class="featured-description">{{ product.description | truncate: 140 }}</p>
+                {% if product.price > product.compare_at_price %}
+                <p class="featured-price-sale">{{ product.price | money  }}</p>
+                {% endif %}
+
                 <p class="featured-price">{{ product.compare_at_price | money  }}</p>
 
           </a>
@@ -80,6 +84,9 @@
     }
     .featured-price {
         color: #4D4D4D;
+    }
+    .featured-price-sale {
+        text-decoration: line-through;
     }
     .label-new {
         border: 2px solid var( — color-base-background-1);
