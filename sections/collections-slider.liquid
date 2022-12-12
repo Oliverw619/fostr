@@ -18,6 +18,38 @@
  
 {%- assign collection = collections[section.settings.collection] -%}
 {%- assign product_limit = section.settings.product_count -%}
+
+{% comment %}
+    Renders a list of product's price (regular, sale)
+
+    Accepts:
+    - product: {Object} Product Liquid object (optional)
+    - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+    - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
+    - price_class: {String} Adds a price class to the price element (optional)
+
+    Usage:
+    {% render 'price', product: product %}
+{% endcomment %}
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign available = target.available | default: false
+  assign money_price = price | money
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+  endif
+
+  if target == product and product.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+-%}
  
     <div class="products-carousel js-flickity" data-flickity='{{ flickity_options }}'>
       {% for product in collection.products limit: product_limit %}
@@ -45,20 +77,20 @@
         - div.price__sale: Displayed when a variant is a sale
     {%- endcomment -%}
     <div class="price__regular">
-      <span class="visually-hidden visually-hidden--inline">{{ 'product.product.price' | t }}</span>
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
       <span class="price-item price-item--regular">
         {{ money_price }}
       </span>
     </div>
     <div class="price__sale">
       {%- unless product.price_varies == false and product.compare_at_price_varies %}
-        <span class="visually-hidden visually-hidden--inline">{{ 'product.price.' | t }}</span>
+        <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
         <span>
           <s class="price-item price-item--regular">
             {% if settings.currency_code_enabled %}
-              {{ product.compare_at_price | money_with_currency }}
+              {{ compare_at_price | money_with_currency }}
             {% else %}
-              {{ product.compare_at_price | money }}
+              {{ compare_at_price | money }}
             {% endif %}
           </s>
         </span>
@@ -93,6 +125,7 @@
     </span>
   {%- endif -%}
 </div>
+
           </a>
       </div>  
     {% endfor %}
