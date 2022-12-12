@@ -25,7 +25,7 @@
           <a href="{{ product.url | within: collection }}">
             <img class="img-explore" src="{{ product.featured_image | img_url: 'master'}}">
             <h4 class="featured-title">{{ product.title }}</h4>
-            <p class="featured-description">{{ product.description | truncate: 20 }}</p>
+            <p class="featured-description">{{ product.description | truncate: 60 }}</p>
             <p class="featured-price">{{ product.price | money }}</p>
           </a>
       </div>  
