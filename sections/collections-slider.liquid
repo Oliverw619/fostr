@@ -22,7 +22,7 @@
     <div class="products-carousel js-flickity" data-flickity='{{ flickity_options }}'>
       {% for product in collection.products limit: product_limit %}
         <div class="carousel-cell">
-          <a href="{{ product.url | within: collection }}">
+          <a href="{{ product.url | within: collection }}" style="text-decoration: none;">
             <img class="img-explore" src="{{ product.featured_image | img_url: 'master'}}">
             <h4 class="featured-title">{{ product.title }}</h4>
             <p class="featured-description">{{ product.description | truncate: 120 }}</p>
