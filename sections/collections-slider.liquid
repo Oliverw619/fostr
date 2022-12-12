@@ -25,7 +25,7 @@
           <a href="{{ product.url | within: collection }}">
             <img class="img-explore" src="{{ product.featured_image | img_url: 'master'}}">
             <h4>{{ product.title }}</h4>
-            <h4>{{ product.description }}</h4>
+            <h4>{{ product.description | truncate: 30} }}</h4>
             <p>{{ product.price | money }}</p>
           </a>
       </div>  
@@ -34,33 +34,33 @@
 </div>
 
 <style>
-    .featured-collection-slider{
-    padding-left: 55px;
-    padding-right: 55px;
-    max-width: 1200px;
-    margin: 0 auto;
+    .featured-collection-slider {
+        padding-left: 55px;
+        padding-right: 55px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
-    .featured-collection-slider .carousel-cell{
-    width:25%;
-    padding: 0 15px;
-    display: block;
+    .featured-collection-slider .carousel-cell {
+        width:25%;
+        padding: 0 15px;
+        display: block;
     }
-    .flickity-button:disabled{
-    pointer-events: all!important;
+    .flickity-button:disabled {
+        pointer-events: all!important;
     }
     @media screen and (max-width: 920px){
-    .featured-collection-slider{
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    .featured-collection-slider .carousel-cell{
-        width:50%;
-    }
+        .featured-collection-slider {
+            padding-left: 15px;
+            padding-right: 15px;srezrt
+        }
+        .featured-collection-slider .carousel-cell{
+            width:50%;
+        }
     }
     @media screen and (max-width: 767px){
-    .featured-collection-slider .carousel-cell{
-        width:100%;
-    }
+        .featured-collection-slider .carousel-cell{
+            width:100%;
+        }
     }
 </style>
 
