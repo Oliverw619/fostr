@@ -31,9 +31,9 @@
                 <img class="img-explore" src="{{ product.featured_image | img_url: 'master'}}">
                 <h4 class="featured-title">{{ product.title }}</h4>
                 <p class="featured-description">{{ product.description | truncate: 140 }}</p>
-                {% if product.price > product.compare_at_price %}
-                <p class="featured-price-sale">{{ product.price | money  }}</p>
-                {% endif %}
+                {% if product.compare_at_price %} 
+<p class="featured-price">{{ product.price | money  }}{{ product.compare_at_price | money  }}</p>
+{% endif %} 
 
                 <p class="featured-price">{{ product.price | money  }}{{ product.compare_at_price | money  }}</p>
 
